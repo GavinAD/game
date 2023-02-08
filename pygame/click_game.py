@@ -16,9 +16,3 @@ def update():
     figure.bottom = figure.bottom + 1
     if figure.bottom > HEIGHT:
         figure.top = 0
-
-def on_mouse_down(pos):
-    if figure.collidepoint(pos):
-        print("Eek!)")
-    else:
-        print("You missed me!")
