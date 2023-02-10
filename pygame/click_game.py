@@ -8,7 +8,7 @@ BACKGROUND_COLOR = (174, 174, 174)
 def draw():
     screen.fill(BACKGROUND_COLOR)
     figure.draw()
-    
+
 def update():
     figure.left = figure.left + 2
     if figure.left > WIDTH:
@@ -19,10 +19,13 @@ def update():
 
 def on_mouse_down(pos):
     if figure.collidepoint(pos):
-        print("Eek!")
-    else:
-        print("You missed me!")
+        set_figure_hurt()
+        print("EEK!")
 
-def on_mouse_down(pos):
-    if figure.collidepoint(pos):
-        figure.image = 'character_clicked'
+def set_figure_hurt():
+    figure.image = "character_clicked"
+    sounds.oof.play()
+    clock.schedule_unique(set_figure_normal, 1.0)
+
+def set_figure_normal():
+    figure.image = "character"
